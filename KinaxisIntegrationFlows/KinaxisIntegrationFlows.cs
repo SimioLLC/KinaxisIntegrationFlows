@@ -118,9 +118,9 @@ namespace KinaxisIntegrationFlows
             // This example code places some new objects from the Standard Library into the active model of the project.
             if (context.ActiveModel != null)
             {                
-                string importerName = "Web API Importer1";
-                string exporterName = "CSV Data Exporter1";
-                int returnValue = KinaxisIntegrationFlowsUtils.runExportFlowForConnectTablAndResultsTable(context.ActiveModel, importerName, exporterName, true, "ConnectToParts", "PartsQueryID", "DemandOrderOutputs");
+                string exporterName = "Web API Exporter1";
+                int returnValue = KinaxisIntegrationFlowsUtils.runExportFlowForConnectTablAndResultsTable(context.ActiveModel, exporterName, true, "DemandOrderOutputs");
+                if (returnValue == 0) MessageBox.Show("Export Flow Completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }      
       
@@ -251,9 +251,9 @@ namespace KinaxisIntegrationFlows
             // This example code places some new objects from the Standard Library into the active model of the project.
             if (context.ActiveModel != null)
             {
-                string importerName = "Web API Importer1";
-                string exporterName = "CSV Data Exporter1";
-                int returnValue = KinaxisIntegrationFlowsUtils.runExportFlowForConnectTablAndResultsTable(context.ActiveModel, importerName, exporterName, false, "ConnectToParts", "PartsQueryID", "DemandOrderOutputs");
+                string exporterName = "Web API Exporter1";
+                int returnValue = KinaxisIntegrationFlowsUtils.runExportFlowForConnectTablAndResultsTable(context.ActiveModel,exporterName, false, "DemandOrderOutputs");
+                if (returnValue == 0) MessageBox.Show("Export Flow Completed", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 

@@ -140,34 +140,19 @@ namespace KinaxisIntegrationFlows
             }
         }
 
-        internal static int runExportFlowForConnectTablAndResultsTable(IModel model, string importerName, string exporterName, bool interactiveResults, string queryIDTableName, string queryIDTablePropertyName, string importTableName)
+        internal static int runExportFlowForConnectTablAndResultsTable(IModel model, string exporterName, bool interactiveResults, string exportTableName)
         {
             string errorMessage = String.Empty;
-            var table = model.Tables[queryIDTableName];
-            if (table == null) throw new Exception(queryIDTableName + " table not found");
+            var table = model.Tables[exportTableName];
+            if (table == null) throw new Exception(exportTableName + " table not found");
             else
             {
-                int returnValue = KinaxisIntegrationFlowsUtils.runImport(importerName, ref table, ref errorMessage);
+                errorMessage = String.Empty;
+                int returnValue = KinaxisIntegrationFlowsUtils.runExport(exporterName, ref table, interactiveResults, ref errorMessage);
                 if (returnValue == -1) throw new Exception(errorMessage);
                 else
                 {
-                    if (table.Rows.Count == 0) throw new Exception(queryIDTableName + " no results found");
-                    else
-                    {
-                        model.Properties[queryIDTablePropertyName].Value = Regex.Replace(table.Rows[0].Properties[0].Value, "#", "%23");
-                        table = model.Tables[importTableName];
-                        if (table == null) throw new Exception(importTableName + " table not found");
-                        else
-                        {
-                            errorMessage = String.Empty;
-                            returnValue = KinaxisIntegrationFlowsUtils.runExport(exporterName, ref table, interactiveResults, ref errorMessage);
-                            if (returnValue == -1) throw new Exception(errorMessage);
-                            else
-                            {
-                                return returnValue;
-                            }
-                        }
-                    }
+                    return returnValue;
                 }
             }
         }

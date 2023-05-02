@@ -63,6 +63,16 @@ namespace KinaxisIntegrationFlows.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ExportFlow {
+            get {
+                object obj = ResourceManager.GetObject("ExportFlow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ImportFlow {
             get {
                 object obj = ResourceManager.GetObject("ImportFlow", resourceCulture);
